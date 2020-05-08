@@ -46,7 +46,7 @@ display_images(outputs.copy(), inputs.copy(),start = int(args.start), end = int(
 #plt.savefig('test.png')
 #plt.show()
 
-def generate_images(inpath, outpath, start, end)
+def generate_images(inpath, outpath, start, end):
     # Custom object needed for inference and training
     custom_objects = {'BilinearUpSampling2D': BilinearUpSampling2D, 'depth_loss_function': None}
 

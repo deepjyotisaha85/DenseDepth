@@ -62,9 +62,11 @@ def generate_images(model, inpath, outpath, start, end, log=False):
     # Compute results
     outputs = predict(model, inputs)
     # Display results
-    write_images(outpath, start, outputs.copy(), inputs.copy(), log=log)
-    if log:
-        print('Finished generating images from :', start, ' till: ', end)
+    #write_images(outpath, start, outputs.copy(), inputs.copy(), log=log)
+    #if log:
+        #print('Finished generating images from :', start, ' till: ', end)
+
+    return outputs  
 
 
 

@@ -53,16 +53,18 @@ def loadmodel():
     model = load_model('nyu.h5', custom_objects=custom_objects, compile=False)
     return model
 
-def generate_images(model, inpath, outpath, start, end):
+def generate_images(model, inpath, outpath, start, end, log=False):
 
     inputs = load_images(inpath, start, end)
-    print('Loaded images from :', start, ' till: ', end)
-    print('\nLoaded ({0}) images of size {1}.'.format(inputs.shape[0], inputs.shape[1:]))
+    if log:
+        print('Loaded images from :', start, ' till: ', end)
+        print('\nLoaded ({0}) images of size {1}.'.format(inputs.shape[0], inputs.shape[1:]))
     # Compute results
     outputs = predict(model, inputs)
     # Display results
-    write_images(outpath, start, outputs.copy(), inputs.copy())
-    print('Finished generating images from :', start, ' till: ', end)
+    write_images(outpath, start, outputs.copy(), inputs.copy(), log=log)
+    if log:
+        print('Finished generating images from :', start, ' till: ', end)
 
 
 

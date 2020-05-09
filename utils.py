@@ -96,7 +96,7 @@ def display_images(outputs, inputs=None, gt=None, is_colormap=True, is_rescale=T
     
     #return skimage.util.montage(all_images, multichannel=True, fill=(0,0,0))
 
-def write_images(path, start, outputs, inputs=None, gt=None, is_colormap=True, is_rescale=True):
+def write_images(path, start, outputs, inputs=None, gt=None, is_colormap=True, is_rescale=True, log=False):
     import matplotlib.pyplot as plt
     import skimage
     from skimage.transform import resize
@@ -104,7 +104,8 @@ def write_images(path, start, outputs, inputs=None, gt=None, is_colormap=True, i
     plasma = plt.get_cmap('gray')
 
     shape = (outputs[0].shape[0], outputs[0].shape[1], 3)
-    print(shape)
+    if log:
+        print(shape)
     
     #all_images = []
     start = start
@@ -119,7 +120,8 @@ def write_images(path, start, outputs, inputs=None, gt=None, is_colormap=True, i
             plt.figure(figsize=(2.24,2.24),dpi=100)
             matplotlib_image = plt.imshow(plasma(rescaled)[:,:,:3])
             pil_image = Image.fromarray(np.uint8( ( matplotlib_image.get_array()*255))).convert("L").resize((224,224))
-            print("Saving Image: ", f"{path}depth_{str(start)}.jpg")
+            if log:
+                print("Saving Image: ", f"{path}depth_{str(start)}.jpg")
             pil_image.save(f"{path}depth_{str(start)}.jpg")
             plt.close() 
             start+=1

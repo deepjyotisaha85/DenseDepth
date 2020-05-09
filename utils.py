@@ -1,6 +1,7 @@
 import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
+from tqdm import notebook
 
 def DepthNorm(x, maxDepth):
     return maxDepth / x

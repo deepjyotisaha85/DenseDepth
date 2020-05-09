@@ -46,7 +46,7 @@ from matplotlib import pyplot as plt
 #plt.savefig('test.png')
 #plt.show()
 
-def generate_images():
+def loadmodel():
     custom_objects = {'BilinearUpSampling2D': BilinearUpSampling2D, 'depth_loss_function': None}
 
     print('Loading model...')

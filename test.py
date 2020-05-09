@@ -46,8 +46,7 @@ from matplotlib import pyplot as plt
 #plt.savefig('test.png')
 #plt.show()
 
-def generate_images(inpath, outpath, start, end):
-    # Custom object needed for inference and training
+def generate_images():
     custom_objects = {'BilinearUpSampling2D': BilinearUpSampling2D, 'depth_loss_function': None}
 
     print('Loading model...')
@@ -55,14 +54,27 @@ def generate_images(inpath, outpath, start, end):
     # Load model into GPU / CPU
     model = load_model('nyu.h5', custom_objects=custom_objects, compile=False)
 
-    print('\nModel loaded ({0}).'.format("nyu.h5"))
+    return model
+
+def generate_images(model, inpath, outpath, start, end):
+    # Custom object needed for inference and training
+    custom_objects = {'BilinearUpSampling2D': BilinearUpSampling2D, 'depth_loss_function': None}
+
+    print('Loading model...')
+
+    # Load model into GPU / CPU
+    #model = load_model('nyu.h5', custom_objects=custom_objects, compile=False)
+
+    #print('\nModel loaded ({0}).'.format("nyu.h5"))
 
     inputs = load_images(inpath, start, end)
+    print('Loaded images from :', start, ' till: ', end)
     print('\nLoaded ({0}) images of size {1}.'.format(inputs.shape[0], inputs.shape[1:]))
     # Compute results
     outputs = predict(model, inputs)
     # Display results
     write_images(outputs.copy(), inputs.copy(), outpath, start)
+    print('Finished generating images from :', start, ' till: ', end)
 
 
 

@@ -120,7 +120,8 @@ def write_images(path, start, outputs, inputs=None, gt=None, is_colormap=True, i
   
             plt.figure(figsize=(2.24,2.24),dpi=100)
             matplotlib_image = plt.imshow(plasma(rescaled)[:,:,:3])
-            pil_image = Image.fromarray(np.uint8( ( matplotlib_image.get_array()*255))).convert("L").resize((224,224))
+            #pil_image = Image.fromarray(np.uint8( ( matplotlib_image.get_array()*255))).convert("L").resize((224,224))
+            pil_image = Image.fromarray(np.uint8( ( matplotlib_image.get_array()*255))).convert("L")
             if log:
                 print("Saving Image: ", f"{path}depth_{str(start)}.jpg")
             pil_image.save(f"{path}depth_{str(start)}.jpg")

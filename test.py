@@ -56,9 +56,9 @@ def loadmodel():
 def predict_output(model, inputs, log=False):
 
     #inputs = load_images(inpath, start, end)
-    if log:
-        print('Loaded images from :', start, ' till: ', end)
-        print('\nLoaded ({0}) images of size {1}.'.format(inputs.shape[0], inputs.shape[1:]))
+    #if log:
+    #    print('Loaded images from :', start, ' till: ', end)
+    #    print('\nLoaded ({0}) images of size {1}.'.format(inputs.shape[0], inputs.shape[1:]))
     # Compute results
     outputs = predict(model, inputs)
     # Display results

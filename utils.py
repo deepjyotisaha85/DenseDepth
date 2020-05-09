@@ -36,7 +36,8 @@ def scale_up(scale, images):
 def load_images(path, start, end):
     loaded_images = []
     for i in range(start, end+1):
-        x = np.clip(np.asarray(Image.open(f"{path}fg_bg_{str(i)}.jpg" ).resize((448, 448)), dtype=float) / 255, 0, 1)
+        #x = np.clip(np.asarray(Image.open(f"{path}fg_bg_{str(i)}.jpg" ).resize((448, 448)), dtype=float) / 255, 0, 1)
+        x = np.clip(np.asarray(Image.open(f"{path}fg_bg_{str(i)}.jpg" ), dtype=float) / 255, 0, 1)
         loaded_images.append(x)
     return np.stack(loaded_images, axis=0)
 

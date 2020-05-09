@@ -96,7 +96,7 @@ def display_images(outputs, inputs=None, gt=None, is_colormap=True, is_rescale=T
     
     #return skimage.util.montage(all_images, multichannel=True, fill=(0,0,0))
 
-def write_images(outputs, inputs=None, gt=None, is_colormap=True, is_rescale=True, path="/content", start=1):
+def write_images(path, start, outputs, inputs=None, gt=None, is_colormap=True, is_rescale=True):
     import matplotlib.pyplot as plt
     import skimage
     from skimage.transform import resize
